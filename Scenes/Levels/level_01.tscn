@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://ch3a62sdi5as2"]
+
+[ext_resource type="Shader" uid="uid://cc1g4eb4wseaf" path="res://Shaders/Post-Processing/m_water.gdshader" id="2_66ail"]
+[ext_resource type="Shader" uid="uid://bqyevdnlwqsfr" path="res://Shaders/Sky/clouds.gdshader" id="3_ni7lu"]
+
+[sub_resource type="Environment" id="Environment_66ail"]
+background_mode = 1
+background_color = Color(0.0303848, 0.743119, 0.567958, 1)
+background_energy_multiplier = 2.5
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.612185, 0.158323, 1)
+ambient_light_energy = 2.5
+tonemap_mode = 3
+ssao_radius = 3.0
+ssil_intensity = 4.25
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.5
+glow_strength = 1.2
+glow_bloom = 0.66
+glow_blend_mode = 1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.15
+volumetric_fog_anisotropy = 0.9
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wf6s8"]
+noise_type = 3
+frequency = 0.0089
+fractal_octaves = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dbq10"]
+normalize = false
+noise = SubResource("FastNoiseLite_wf6s8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_taws2"]
+render_priority = 0
+shader = ExtResource("3_ni7lu")
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_dbq10")
+shader_parameter/isSoft = false
+shader_parameter/speed = 0.1
+shader_parameter/brightness = 0.1
+shader_parameter/threshold = 1.0
+shader_parameter/fluffiness = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mb1if"]
+material = SubResource("ShaderMaterial_taws2")
+size = Vector2(60, 60)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_66ail"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_66ail"]
+noise = SubResource("FastNoiseLite_66ail")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ni7lu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wf6s8"]
+noise = SubResource("FastNoiseLite_ni7lu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wf6s8"]
+render_priority = 0
+shader = ExtResource("2_66ail")
+shader_parameter/surfaceNoise = SubResource("NoiseTexture2D_wf6s8")
+shader_parameter/distortNoise = SubResource("NoiseTexture2D_66ail")
+shader_parameter/beer_factor = 0.8
+shader_parameter/foam_distance = 0.01
+shader_parameter/foam_max_distance = 0.4
+shader_parameter/foam_min_distance = 0.04
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/surface_noise_tiling = Vector2(1, 4)
+shader_parameter/surface_noise_scroll = Vector3(0.03, 0.03, 0)
+shader_parameter/surface_noise_cutoff = 0.777
+shader_parameter/surface_distortion_amount = 0.27
+shader_parameter/_DepthGradientShallow = Color(0.325, 0.807, 0.971, 0.725)
+shader_parameter/_DepthGradientDeep = Color(0.086, 0.407, 1, 0.749)
+shader_parameter/_DepthMaxDistance = 1.0
+shader_parameter/_DepthFactor = 1.0
+shader_parameter/roughness = 0.25
+shader_parameter/specular = 0.75
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dbq10"]
+material = SubResource("ShaderMaterial_wf6s8")
+size = Vector2(50, 50)
+
+[node name="level_01" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_66ail")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Clouds" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+cast_shadow = 3
+extra_cull_margin = 16384.0
+mesh = SubResource("PlaneMesh_mb1if")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 10, 5)
+projection = 1
+size = 10.0
+
+[node name="Water" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_dbq10")

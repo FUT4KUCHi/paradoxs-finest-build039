@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://bfr0qu7027m0m"]
+
+[ext_resource type="PackedScene" uid="uid://6lwpyt3w4bjs" path="res://Assets/Models/Food_GLB/sandwich.glb" id="1_jlkci"]
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="1_lj0ss"]
+[ext_resource type="Texture2D" uid="uid://dnoq4iysbnhap" path="res://Assets/Textures/FoodPreviews_PNG/sandwich.png" id="2_j1p08"]
+[ext_resource type="PackedScene" uid="uid://d2n5fcc4xhkr8" path="res://Assets/Models/Food_GLB/bread.glb" id="3_yw8lq"]
+[ext_resource type="Texture2D" uid="uid://4byy3oarcfv2" path="res://Assets/Textures/FoodPreviews_PNG/bread.png" id="5_0ctn6"]
+
+[resource]
+script = ExtResource("1_lj0ss")
+name = "Bread"
+id = "bread"
+visual = ExtResource("5_0ctn6")
+scene = ExtResource("3_yw8lq")
+can_be_processed = true
+processed_item_id = "sandwich"
+processed_item_visual = ExtResource("2_j1p08")
+procesed_item_scene = ExtResource("1_jlkci")
+required_ingredients = Array[String]([])
+cost = 100
+description = ""
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

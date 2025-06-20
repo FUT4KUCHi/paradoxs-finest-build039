@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://by1jtvb478wbu"]
+
+[ext_resource type="PackedScene" uid="uid://egty0oxqbdef" path="res://Assets/Models/Food_GLB/egg-cooked.glb" id="1_500lj"]
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="1_imhjy"]
+[ext_resource type="PackedScene" uid="uid://c4fr3bw87jfly" path="res://Assets/Models/Food_GLB/egg.glb" id="1_qou7f"]
+[ext_resource type="Texture2D" uid="uid://dctlvc6edngkm" path="res://Assets/Textures/FoodPreviews_PNG/egg-cooked.png" id="2_5ewkc"]
+[ext_resource type="Texture2D" uid="uid://clckm11vvqpae" path="res://Assets/Textures/FoodPreviews_PNG/egg.png" id="3_naim4"]
+
+[resource]
+script = ExtResource("1_imhjy")
+name = "Egg"
+id = "egg"
+visual = ExtResource("3_naim4")
+scene = ExtResource("1_qou7f")
+can_be_processed = true
+processed_item_id = "fried_egg"
+processed_item_visual = ExtResource("2_5ewkc")
+procesed_item_scene = ExtResource("1_500lj")
+required_ingredients = Array[String]([])
+cost = 100
+description = ""
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

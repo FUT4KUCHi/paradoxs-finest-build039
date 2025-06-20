@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://kq262mc4xrtm"]
+
+[ext_resource type="PackedScene" uid="uid://djptmndhppbxr" path="res://Assets/Models/Food_GLB/meat-cooked.glb" id="1_cc35a"]
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="1_cycs1"]
+[ext_resource type="Texture2D" uid="uid://b2nn7m065iavq" path="res://Assets/Textures/FoodPreviews_PNG/meat-cooked.png" id="2_td3nw"]
+
+[resource]
+script = ExtResource("1_cycs1")
+id = "steak"
+name = "Steak"
+info = ""
+visual = ExtResource("2_td3nw")
+scene = ExtResource("1_cc35a")
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

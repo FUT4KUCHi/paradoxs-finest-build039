@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://1thqugwv0rk1"]
+
+[ext_resource type="Script" uid="uid://bydahj8egte0n" path="res://Scripts/Entities/Player/player_old.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://blq42gpujyhll" path="res://Components/radar_component.tscn" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://cy1ljo0vcxyhr" path="res://Scripts/Systems/hold_socket.gd" id="3_6t5aa"]
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v0iea"]
+resource_name = "rotation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t5aa"]
+_data = {
+&"RESET": SubResource("Animation_cvnsp"),
+&"rotation": SubResource("Animation_v0iea")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f60y1"]
+albedo_color = Color(0.676071, 2.11775e-05, 0.491618, 1)
+metallic = 0.5
+metallic_specular = 1.0
+roughness = 0.0
+ao_enabled = true
+ao_light_affect = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_v0iea"]
+material = SubResource("StandardMaterial3D_f60y1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvnsp"]
+
+[node name="player_v1" type="CharacterBody3D"]
+script = ExtResource("1_v0iea")
+
+[node name="HoldSocket" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 1, 0)
+script = ExtResource("3_6t5aa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HoldSocket"]
+libraries = {
+&"": SubResource("AnimationLibrary_6t5aa")
+}
+
+[node name="RadarComponent" parent="." instance=ExtResource("2_cvnsp")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_v0iea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cvnsp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 8, 8, 8)
+projection = 1
+size = 12.0
+
+[node name="Label3D" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+texture_filter = 0
+font_size = 48

@@ -1,0 +1,222 @@
+[gd_scene load_steps=18 format=3 uid="uid://v8v683b2mn5e"]
+
+[ext_resource type="Script" uid="uid://k2k3yxea8860" path="res://Scripts/Entities/Objects/station.gd" id="1_svk11"]
+[ext_resource type="Texture2D" uid="uid://bj7vdx2axkji3" path="res://Assets/UI/UI_PNG/Extra/Default/icon_arrow_down_light.png" id="2_msjkx"]
+[ext_resource type="PackedScene" uid="uid://bsmua8i3h8q16" path="res://Assets/Models/Food_GLB/pan.glb" id="2_svk11"]
+[ext_resource type="PackedScene" uid="uid://hoqseog1uawr" path="res://Assets/Models/Food_GLB/pan-stew.glb" id="3_r5a08"]
+[ext_resource type="PackedScene" uid="uid://bn6so6gri2pja" path="res://Assets/Models/KayKit_GLB/stove_single.gltf" id="4_r5a08"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lwtw"]
+albedo_color = Color(0.878431, 0.211765, 0.133333, 1)
+roughness = 0.5
+emission = Color(0.482983, 0.191595, 0.133675, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7lwtw"]
+material = SubResource("StandardMaterial3D_7lwtw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_807qb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_svk11"]
+
+[sub_resource type="Animation" id="Animation_svk11"]
+resource_name = "Cooking"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(0.174533, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tuiyl"]
+resource_name = "DropIndicator"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Indicator:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 1.1, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ko0g"]
+resource_name = "ProgressBar"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar/SubViewport/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_r5a08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Indicator:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProgressBar/SubViewport/ProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ko0g"]
+_data = {
+&"Cooking": SubResource("Animation_svk11"),
+&"DropIndicator": SubResource("Animation_tuiyl"),
+&"ProgressBar": SubResource("Animation_7ko0g"),
+&"RESET": SubResource("Animation_r5a08")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_svk11"]
+viewport_path = NodePath("ProgressBar/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5a08"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+border_width_bottom = 3
+border_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ko0g"]
+bg_color = Color(0.548891, 0.87657, 0.263187, 1)
+border_width_bottom = 3
+border_color = Color(0.0823529, 0.627451, 0.0823529, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="Station" type="Node3D"]
+script = ExtResource("1_svk11")
+
+[node name="Visuals" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="pan2" parent="Visuals" instance=ExtResource("2_svk11")]
+
+[node name="pan-stew2" parent="Visuals" instance=ExtResource("3_r5a08")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, -0.3, 0)
+mesh = SubResource("BoxMesh_7lwtw")
+skeleton = NodePath("../StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_807qb")
+
+[node name="Indicator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Indicator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0570418, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_msjkx")
+
+[node name="Item" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+billboard = 1
+texture_filter = 0
+font_size = 42
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_svk11")
+debug_color = Color(0, 0.554834, 0.906458, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7ko0g")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProgressBar" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="ProgressBar"]
+billboard = 1
+transparent = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_svk11")
+
+[node name="SubViewport" type="SubViewport" parent="ProgressBar"]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(256, 30)
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBar/SubViewport"]
+offset_right = 256.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_r5a08")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ko0g")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="stove_single2" parent="." instance=ExtResource("4_r5a08")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.1, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

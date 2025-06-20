@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://d26xx4h416oxa"]
+
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="1_4janm"]
+[ext_resource type="PackedScene" uid="uid://dteh5xyypv3a5" path="res://Assets/Models/Food_GLB/bowl-soup.glb" id="1_tw7yp"]
+[ext_resource type="Texture2D" uid="uid://coq5fgto4yshe" path="res://Assets/Textures/FoodPreviews_PNG/bowl-soup.png" id="2_kssbl"]
+[ext_resource type="PackedScene" uid="uid://dijlglkp12a4y" path="res://Assets/Models/Food_GLB/bowl.glb" id="3_tace1"]
+[ext_resource type="Texture2D" uid="uid://id3waolkrre2" path="res://Assets/Textures/FoodPreviews_PNG/bowl.png" id="5_dqq7a"]
+
+[resource]
+script = ExtResource("1_4janm")
+name = "Bowl"
+id = "bowl"
+visual = ExtResource("5_dqq7a")
+scene = ExtResource("3_tace1")
+can_be_processed = true
+processed_item_id = "soup"
+processed_item_visual = ExtResource("2_kssbl")
+procesed_item_scene = ExtResource("1_tw7yp")
+required_ingredients = Array[String]([])
+cost = 300
+description = ""
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://c2aiu2u4m3xns"]
+
+[ext_resource type="Script" uid="uid://lychhs7iyr5b" path="res://Scripts/Core/level.gd" id="1_w54qd"]
+[ext_resource type="PackedScene" uid="uid://b5s1n0ue1ebm8" path="res://Scenes/customer.tscn" id="2_p5spi"]
+[ext_resource type="Script" uid="uid://bg7nd15m3gyb8" path="res://Scripts/Systems/seating_system.gd" id="9_on330"]
+[ext_resource type="PackedScene" uid="uid://o0l4rasjbk0i" path="res://Scenes/Prefabs/chairs_root.tscn" id="10_7jr78"]
+[ext_resource type="Script" uid="uid://3nc7wo4me7r2" path="res://Scripts/Systems/serving_system.gd" id="10_p5spi"]
+[ext_resource type="PackedScene" uid="uid://1thqugwv0rk1" path="res://Scenes/player.tscn" id="11_6xsti"]
+[ext_resource type="PackedScene" uid="uid://y4c8n3rrpofj" path="res://Scenes/Prefabs/kitchen.tscn" id="12_ksc4g"]
+[ext_resource type="PackedScene" uid="uid://efk4ejfu6aur" path="res://Scenes/Prefabs/fridge.tscn" id="13_l6d3f"]
+[ext_resource type="PackedScene" uid="uid://brctgoxpngpla" path="res://Scenes/UI/Clock.tscn" id="15_w0slw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d8tg7"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_vh5rs"]
+sky_material = SubResource("ProceduralSkyMaterial_d8tg7")
+
+[sub_resource type="Environment" id="Environment_bxe70"]
+background_mode = 2
+sky = SubResource("Sky_vh5rs")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+glow_bloom = 1.0
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_d8tg7"]
+vertices = PackedVector3Array(-19.5, 0.52, -19.5, -19.5, 0.52, 19.5, 19.5, 0.52, 19.5, 19.5, 0.52, -19.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqqml"]
+albedo_color = Color(0.0779128, 0.131088, 0.155279, 1)
+metallic = 1.0
+
+[node name="Level_Test" type="Node"]
+script = ExtResource("1_w54qd")
+customer = ExtResource("2_p5spi")
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="SeatingSystem" type="Node" parent="Systems"]
+script = ExtResource("9_on330")
+
+[node name="ServingSystem" type="Node" parent="Systems"]
+script = ExtResource("10_p5spi")
+
+[node name="CookingSystem" type="Node" parent="Systems"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bxe70")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_d8tg7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+use_collision = true
+size = Vector3(40, 1, 40)
+material = SubResource("StandardMaterial3D_aqqml")
+
+[node name="ChairsRoot" parent="." instance=ExtResource("10_7jr78")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.1, -5)
+
+[node name="Player" parent="." instance=ExtResource("11_6xsti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 1)
+
+[node name="Door" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -12)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Kitchen" parent="." instance=ExtResource("12_ksc4g")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -5, 1, 0)
+
+[node name="Fridge" parent="." instance=ExtResource("13_l6d3f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 1.5, 5.4)
+
+[node name="Control" parent="." instance=ExtResource("15_w0slw")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Kitchen"]

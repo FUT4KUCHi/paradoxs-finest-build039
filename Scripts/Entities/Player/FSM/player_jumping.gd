@@ -1,0 +1,41 @@
+extends State
+
+@export_group("Movement")
+@export var movement_speed: float = 5.00
+@export var rotation_speed: float = 12.00
+@export var acceleration: float = 0.1
+@export var deceleration: float = 3.5
+@export var player_model: Node3D
+var movement_input_vector = Vector2.ZERO
+var last_movement_direction = Vector3.BACK
+
+func enter():
+	owner_fsm.velocity.y += 6
+	owner_fsm.animation_player.play("jump")
+	print("Player has entered into jump state.")
+
+func physics_update(delta):
+	_handle_movement(delta) 
+	
+# Handle movement while in "PlayerJumping" state.
+func _handle_movement(delta):
+	var input_dir = owner_fsm.get_input_direction()
+	var move_direction = (owner_fsm.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if move_direction:
+		owner_fsm.velocity.x = lerp(owner_fsm.velocity.x, move_direction.x * movement_speed, acceleration)
+		owner_fsm.velocity.z = lerp(owner_fsm.velocity.z, move_direction.z * movement_speed, acceleration)
+	else:
+		owner_fsm.velocity.x = move_toward(owner_fsm.velocity.x, 0, deceleration) 
+		owner_fsm.velocity.z = move_toward(owner_fsm.velocity.z, 0, deceleration)
+	
+	if move_direction.length() > 0.2:
+		last_movement_direction = move_direction
+	var target_angle := Vector3.BACK.signed_angle_to(last_movement_direction, Vector3.UP)
+	player_model.global_rotation.y = lerp_angle(player_model.rotation.y, target_angle, rotation_speed * delta)
+	
+	#if not owner_fsm.raycast.is_colliding():
+		#Transition.emit(self, "PlayerFalling")
+		
+	if owner_fsm.is_on_floor():
+		Transition.emit(self, "PlayerIdle")

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://bsprwypbsk5wl"]
+
+[ext_resource type="PackedScene" uid="uid://dsxgdsg6vt3d2" path="res://Assets/Models/Food_GLB/chinese.glb" id="1_b3f61"]
+[ext_resource type="PackedScene" uid="uid://cvkhfbixi3lmn" path="res://Assets/Models/Food_GLB/rice-ball.glb" id="1_eu2gs"]
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="1_pr72h"]
+[ext_resource type="Texture2D" uid="uid://cuseashtf5s8c" path="res://Assets/Textures/FoodPreviews_PNG/chinese.png" id="2_8rsow"]
+[ext_resource type="Texture2D" uid="uid://ihemnp1agum4" path="res://Assets/Textures/FoodPreviews_PNG/rice-ball.png" id="3_mtve6"]
+
+[resource]
+script = ExtResource("1_pr72h")
+name = "Onigiri"
+id = "rice-ball"
+visual = ExtResource("3_mtve6")
+scene = ExtResource("1_eu2gs")
+can_be_processed = true
+processed_item_id = "chow_mein"
+processed_item_visual = ExtResource("2_8rsow")
+procesed_item_scene = ExtResource("1_b3f61")
+required_ingredients = Array[String]([])
+cost = 50
+description = ""
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

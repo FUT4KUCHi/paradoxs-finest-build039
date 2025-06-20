@@ -1,0 +1,303 @@
+[gd_scene load_steps=19 format=3 uid="uid://b5s1n0ue1ebm8"]
+
+[ext_resource type="Script" uid="uid://c2j776ab5ycia" path="res://Scripts/Entities/NPCs/customer_v2.gd" id="1_fp685"]
+[ext_resource type="Resource" uid="uid://cs0yli3t6e110" path="res://Custom Resources/Customers/Emily.tres" id="2_7c3kf"]
+[ext_resource type="PackedScene" uid="uid://blq42gpujyhll" path="res://Components/radar_component.tscn" id="3_0v30w"]
+[ext_resource type="Texture2D" uid="uid://fkkxofxc2mlk" path="res://Assets/Textures/Emotes_TileSheets/pixel_style1.png" id="4_qf3me"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp685"]
+albedo_color = Color(0.557268, 0.758541, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7c3kf"]
+material = SubResource("StandardMaterial3D_fp685")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0v30w"]
+
+[sub_resource type="Animation" id="Animation_7c3kf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Emote:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MeshInstance3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fhub2"]
+resource_name = "anger"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [22]
+}
+
+[sub_resource type="Animation" id="Animation_o6oka"]
+resource_name = "eating"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Emote:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4, 0), Vector3(0, 4.2, 0), Vector3(0, 3.8, 0), Vector3(0, 4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t5tqw"]
+resource_name = "excitement"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_olakf"]
+resource_name = "heartbroken"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_qf3me"]
+resource_name = "joy"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Emote:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4, 0), Vector3(0, 4.2, 0), Vector3(0, 3.8, 0), Vector3(0, 4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2o0mk"]
+resource_name = "love"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_q72uo"]
+resource_name = "sadness"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_vkxjs"]
+resource_name = "waiting"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fp685"]
+resource_name = "wavy"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2.1, 0), Vector3(0, 1.9, 0), Vector3(0, 2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0v30w"]
+_data = {
+&"RESET": SubResource("Animation_7c3kf"),
+&"anger": SubResource("Animation_fhub2"),
+&"eating": SubResource("Animation_o6oka"),
+&"excitement": SubResource("Animation_t5tqw"),
+&"heartbroken": SubResource("Animation_olakf"),
+&"joy": SubResource("Animation_qf3me"),
+&"love": SubResource("Animation_2o0mk"),
+&"sadness": SubResource("Animation_q72uo"),
+&"waiting": SubResource("Animation_vkxjs"),
+&"wavy": SubResource("Animation_fp685")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_fp685")
+customer_resource = ExtResource("2_7c3kf")
+
+[node name="RadarComponent" parent="." instance=ExtResource("3_0v30w")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7c3kf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0v30w")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+font_size = 60
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+use_3d_avoidance = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PopUp" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.9, 0)
+
+[node name="Emote" type="Sprite3D" parent="PopUp"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 4, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_qf3me")
+hframes = 10
+vframes = 3
+frame = 2
+
+[node name="Sprite3D" type="Sprite3D" parent="PopUp"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+visible = false
+extra_cull_margin = 16384.0
+pixel_size = 0.015
+billboard = 1
+texture_filter = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PopUp"]
+libraries = {
+&"": SubResource("AnimationLibrary_0v30w")
+}
+
+[node name="Label3D2" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

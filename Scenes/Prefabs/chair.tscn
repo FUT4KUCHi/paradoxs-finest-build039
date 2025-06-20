@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8uxqcy7en1lu"]
+
+[ext_resource type="Script" uid="uid://b75osri6wuph1" path="res://Scripts/Entities/Objects/chair.gd" id="1_ughjk"]
+[ext_resource type="Texture2D" uid="uid://bd6lpo3eftepm" path="res://Assets/Textures/Prototype_PNG/Orange/texture_01.png" id="2_3y41w"]
+[ext_resource type="PackedScene" uid="uid://dul4yibe60awp" path="res://Assets/Models/KayKit_GLB/chair_stool.gltf" id="3_ajwks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d67ni"]
+albedo_texture = ExtResource("2_3y41w")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_n40r7"]
+material = SubResource("StandardMaterial3D_d67ni")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxmx0"]
+
+[node name="Chair" type="StaticBody3D"]
+script = ExtResource("1_ughjk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_n40r7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_uxmx0")
+
+[node name="SeatPoint" type="Marker3D" parent="."]
+
+[node name="chair_stool2" parent="." instance=ExtResource("3_ajwks")]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://dxnylltjv1m2u"]
+
+[ext_resource type="PackedScene" uid="uid://id0myygrfs5m" path="res://Assets/Models/Food_GLB/plate-sauerkraut.glb" id="1_7i1ed"]
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="1_k6ibn"]
+[ext_resource type="Texture2D" uid="uid://swbjgm780h6c" path="res://Assets/Textures/FoodPreviews_PNG/plate-sauerkraut.png" id="3_bhq21"]
+
+[resource]
+script = ExtResource("1_k6ibn")
+name = "Sauerkraut"
+id = "sauerkraut"
+visual = ExtResource("3_bhq21")
+scene = ExtResource("1_7i1ed")
+can_be_processed = false
+processed_item_id = ""
+required_ingredients = Array[String]([])
+cost = 0
+description = ""
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://b85heaebe2qfe"]
+
+[ext_resource type="Script" uid="uid://cvsyyc55k0ppa" path="res://Scripts/Systems/debug.gd" id="1_ifyjj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yipw"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Debug" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 200)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -384.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 224.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3yipw")
+script = ExtResource("1_ifyjj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="frames_per_second" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="customers" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClockLabel" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Points" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="held_item" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="item_status" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2

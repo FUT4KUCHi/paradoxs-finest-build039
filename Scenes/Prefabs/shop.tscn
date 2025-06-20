@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://clqj8ne4d6jlf"]
+
+[ext_resource type="Script" uid="uid://2hl6bi1bkdw7" path="res://Scripts/Entities/Shop.gd" id="1_4taar"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dcfph"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pglxw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfiy5"]
+size = Vector3(5, 5, 5)
+
+[node name="Shop" type="Node3D"]
+script = ExtResource("1_4taar")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dcfph")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_pglxw")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_gfiy5")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

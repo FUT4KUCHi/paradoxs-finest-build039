@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://dvmc70egunycu"]
+
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="1_0tqt0"]
+[ext_resource type="PackedScene" uid="uid://dsxgdsg6vt3d2" path="res://Assets/Models/Food_GLB/chinese.glb" id="1_v0i44"]
+[ext_resource type="Texture2D" uid="uid://cuseashtf5s8c" path="res://Assets/Textures/FoodPreviews_PNG/chinese.png" id="2_m6ugn"]
+
+[resource]
+script = ExtResource("1_0tqt0")
+id = "chow_mein"
+name = "Chow Mein"
+info = ""
+visual = ExtResource("2_m6ugn")
+scene = ExtResource("1_v0i44")
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

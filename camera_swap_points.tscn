@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://biyuibn1drcsi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_duqtl"]
+size = Vector3(60, 70, 77)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oabfo"]
+size = Vector3(30, 50, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c71j3"]
+size = Vector3(14.9, 50, 46)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rbng5"]
+size = Vector3(141, 35, 52)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ot8f"]
+size = Vector3(46, 76, 27)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vuwp0"]
+size = Vector3(8, 70, 46)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s6vch"]
+size = Vector3(25, 50, 77)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3juvj"]
+size = Vector3(59.4, 68, 51)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecyoo"]
+size = Vector3(80, 50, 132)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16n5f"]
+size = Vector3(164, 69, 82)
+
+[node name="CameraSwapPoints" type="Node3D"]
+
+[node name="BottomRight" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 33)
+
+[node name="BottomLeft" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.9, 26, -45)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BottomLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1, 9, 33.5)
+shape = SubResource("BoxShape3D_duqtl")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="TopRight" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 26, 5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 19, 31)
+shape = SubResource("BoxShape3D_oabfo")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="TopRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.55, 19, 17)
+shape = SubResource("BoxShape3D_c71j3")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TopRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.5, 26.5, -149.5)
+shape = SubResource("BoxShape3D_rbng5")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="TopRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99999, 6, -68.5)
+shape = SubResource("BoxShape3D_5ot8f")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="TopLeft" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9, 26, -17)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 9, 39)
+shape = SubResource("BoxShape3D_vuwp0")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="TopLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5, 19, 5.5)
+shape = SubResource("BoxShape3D_s6vch")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TopLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.3, 10, 6.5)
+shape = SubResource("BoxShape3D_3juvj")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="TopLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195, -34, -252)
+shape = SubResource("BoxShape3D_ecyoo")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="TopLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, 9.5, -60.3)
+shape = SubResource("BoxShape3D_16n5f")
+debug_color = Color(0.890571, 0.000272805, 0.801449, 1)

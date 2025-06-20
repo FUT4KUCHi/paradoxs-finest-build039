@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://m23fde3qwpyx"]
+
+[ext_resource type="FontFile" uid="uid://c8jin4ff1cja" path="res://Assets/UI/Fonts/AoboshiOne/AoboshiOne-Regular.ttf" id="1_j1jej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk2yf"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83uc6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83uc6"]
+bg_color = Color(0.0807833, 0.0807834, 0.0807833, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1jej"]
+bg_color = Color(0.610768, 0.539651, 0.87669, 1)
+
+[resource]
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_j1jej")
+Button/styles/hover = SubResource("StyleBoxFlat_sk2yf")
+Button/styles/normal = SubResource("StyleBoxEmpty_83uc6")
+Panel/styles/panel = SubResource("StyleBoxFlat_83uc6")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_j1jej")
+TabContainer/fonts/font = ExtResource("1_j1jej")

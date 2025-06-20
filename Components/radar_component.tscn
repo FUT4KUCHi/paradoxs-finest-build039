@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blq42gpujyhll"]
+
+[ext_resource type="Script" uid="uid://ds0tc4qm224ol" path="res://Scripts/Systems/RadarComponent.gd" id="1_airod"]
+
+[node name="RadarComponent" type="Node3D"]
+script = ExtResource("1_airod")

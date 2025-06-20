@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://nca2unt7ry4h"]
+
+[ext_resource type="PackedScene" uid="uid://djptmndhppbxr" path="res://Assets/Models/Food_GLB/meat-cooked.glb" id="1_oossv"]
+[ext_resource type="Texture2D" uid="uid://b2nn7m065iavq" path="res://Assets/Textures/FoodPreviews_PNG/meat-cooked.png" id="2_q0mke"]
+[ext_resource type="PackedScene" uid="uid://tavqlyr72utp" path="res://Assets/Models/Food_GLB/meat-raw.glb" id="3_u80vn"]
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="4_gw6jw"]
+[ext_resource type="Texture2D" uid="uid://wk66ql4jtdco" path="res://Assets/Textures/FoodPreviews_PNG/meat-raw.png" id="5_vs0e2"]
+
+[resource]
+script = ExtResource("4_gw6jw")
+name = "Meat"
+id = "meat"
+visual = ExtResource("5_vs0e2")
+scene = ExtResource("3_u80vn")
+can_be_processed = true
+processed_item_id = "steak"
+processed_item_visual = ExtResource("2_q0mke")
+procesed_item_scene = ExtResource("1_oossv")
+required_ingredients = Array[String]([])
+cost = 350
+description = ""
+metadata/_custom_type_script = "uid://d1raprijlv8tf"

@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhb1yqj0qxj3j"]
+
+[ext_resource type="Script" uid="uid://b8thtnurmbnny" path="res://Scripts/Entities/Objects/sushi_table.gd" id="1_ltkme"]
+[ext_resource type="PackedScene" uid="uid://bjmb2ykugrr3y" path="res://Assets/Models/Food_GLB/cutting-board-japanese.glb" id="1_rmfx4"]
+[ext_resource type="Resource" uid="uid://ey5fdpkrb2li" path="res://Custom Resources/Food/SushiEgg.tres" id="2_ibogb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ka6y1"]
+albedo_color = Color(0.772549, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rmfx4"]
+material = SubResource("StandardMaterial3D_ka6y1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ltkme"]
+
+[sub_resource type="Animation" id="Animation_r6bme"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar/SubViewport/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_ibogb"]
+resource_name = "sushi_rolling"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar/SubViewport/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_esdi4"]
+_data = {
+&"RESET": SubResource("Animation_r6bme"),
+&"sushi_rolling": SubResource("Animation_ibogb")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ih2ik"]
+viewport_path = NodePath("ProgressBar/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16ji8"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+border_width_bottom = 3
+border_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hg3i1"]
+bg_color = Color(0.548891, 0.87657, 0.263187, 1)
+border_width_bottom = 3
+border_color = Color(0.0823529, 0.627451, 0.0823529, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="SushiTable" type="Node3D"]
+script = ExtResource("1_ltkme")
+resource = ExtResource("2_ibogb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rmfx4")
+
+[node name="Visual" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="cutting-board-japanese2" parent="Visual" instance=ExtResource("1_rmfx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="SnapPoint" type="Marker3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ltkme")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_esdi4")
+}
+
+[node name="ProgressBar" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="ProgressBar"]
+billboard = 1
+transparent = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_ih2ik")
+
+[node name="SubViewport" type="SubViewport" parent="ProgressBar"]
+gui_embed_subwindows = true
+size = Vector2i(256, 30)
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBar/SubViewport"]
+offset_right = 256.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_16ji8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hg3i1")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://c18fk5vy2al1s"]
+
+[ext_resource type="PackedScene" uid="uid://id0myygrfs5m" path="res://Assets/Models/Food_GLB/plate-sauerkraut.glb" id="1_2j6e2"]
+[ext_resource type="Texture2D" uid="uid://swbjgm780h6c" path="res://Assets/Textures/FoodPreviews_PNG/plate-sauerkraut.png" id="2_72h0y"]
+[ext_resource type="PackedScene" uid="uid://bjh5jqoqublnm" path="res://Assets/Models/Food_GLB/meat-sausage.glb" id="3_2j6e2"]
+[ext_resource type="Script" uid="uid://d1raprijlv8tf" path="res://Scripts/Classes/ItemResource.gd" id="4_rctpv"]
+[ext_resource type="Texture2D" uid="uid://dovkh2i77n4wh" path="res://Assets/Textures/FoodPreviews_PNG/meat-sausage.png" id="5_72h0y"]
+
+[resource]
+script = ExtResource("4_rctpv")
+name = "Sausage"
+id = "sausage"
+visual = ExtResource("5_72h0y")
+scene = ExtResource("3_2j6e2")
+can_be_processed = true
+processed_item_id = "sauerkraut"
+processed_item_visual = ExtResource("2_72h0y")
+procesed_item_scene = ExtResource("1_2j6e2")
+required_ingredients = Array[String]([])
+cost = 100
+description = ""
+metadata/_custom_type_script = "uid://d1raprijlv8tf"
